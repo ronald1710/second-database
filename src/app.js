@@ -3,6 +3,7 @@ const express = require("express");
 //importar modulo de la db
 const db = require("./utils/database");
 const Users = require("./models/users.model");
+const cors = require('cors')
 const { where } = require("sequelize");
 require ('dotenv').config();
 const PORT=process.env.PORT || 8000;
@@ -17,6 +18,8 @@ db.sync()
 
 //creamos instancia de express
 const app = express();
+
+app.use(cors())
 
 app.use(express.json());
 
