@@ -4,6 +4,8 @@ const express = require("express");
 const db = require("./utils/database");
 const Users = require("./models/users.model");
 const { where } = require("sequelize");
+require ('dotenv').config();
+const PORT=process.env.PORT || 8000;
 //metodo de sequelize, es un metodo asincrono
 db.authenticate()
   .then(() => console.log("base de datos conectada"))
@@ -146,8 +148,10 @@ app.put("/users/:id", async (req, res) => {
 });
 
 //dejar escuchando a nuestro servidor
-app.listen(8000, () => {
-  console.log("servidor escuchando en el puerto 8000");
+app.listen(PORT, () => {
+  console.log(`servidor escuchando en el puerto ${PORT}` );
 });
 
 //comprobando conexion a la db
+
+console.log(process.env)
